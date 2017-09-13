@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Specials extends Migration
+class Types extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,9 @@ class Specials extends Migration
      */
     public function up()
     {
-        Schema::create('specials', function (Blueprint $table) {
+        Schema::create('types', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('type');
             $table->string('name');
-            $table->string('price');
-            $table->string('description');
-            $table->string('pairings')->nullable();
-            $table->integer('ingredient')->nullable();;
-            $table->integer('onMenu');
             $table->timestamps();
         });
     }
@@ -33,6 +27,6 @@ class Specials extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('specials');
+        Schema::dropIfExists('types');
     }
 }

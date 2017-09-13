@@ -16,5 +16,8 @@ use Illuminate\Http\Request;
 Route::post('signUp', 'AuthController@signUp');
 Route::post('signIn', 'AuthController@signIn');
 Route::get('getUser', 'AuthController@getUser');
+Route::get('getTypes', 'DBController@getTypes');
+Route::get('getIngredients', 'DBController@getIngredients');
+Route::post('storeItem', 'DBController@storeItem');
 
 Route::any('{path?}', 'MainController@index')->where("path", ".+");
