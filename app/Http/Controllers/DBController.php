@@ -12,12 +12,34 @@ use App\Special;
 
 class DBController extends Controller
 {
+  public function getLastSpecial()
+  {
+    $lastSpecial = Special::orderBy('id', 'DESC')->first();
+
+    return Response::json(['lastSpecial' => $lastSpecial]);
+  }
+
+  public function getAllSpecials()
+  {
+    $allSpecials = Special::orderBy('name', 'ASC')->get();
+
+    return Response::json(['allSpecials' => $allSpecials]);
+  }
+
+  public function getMarkedSpecials()
+  {
+    $markedSpecials = Special::orderBy('name', 'ASC')->first();
+
+    return Response::json(['markedSpecials' => $markedSpecials]);
+  }
+
   public function getTypes()
   {
     $types = Type::all();
 
     return Response::json(['types' => $types]);
   }
+
   public function getIngredients()
   {
     $ingredients = Ingredient::all();
