@@ -16,12 +16,12 @@ class Specials extends Migration
         Schema::create('specials', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('type');
-            $table->string('name');
+            $table->string('dish');
             $table->string('price');
             $table->string('description');
             $table->string('pairings')->nullable();
             $table->integer('ingredient')->nullable();;
-            $table->integer('onMenu');
+            $table->integer('onMenu')->nullable();
             $table->timestamps();
         });
     }

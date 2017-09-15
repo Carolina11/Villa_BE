@@ -18,6 +18,7 @@ Route::post('signIn', 'AuthController@signIn');
 Route::get('getUser', 'AuthController@getUser');
 Route::get('getTypes', 'DBController@getTypes');
 Route::get('getIngredients', 'DBController@getIngredients');
+Route::get('getMenus', 'DBController@getMenus');
 Route::post('storeItem', 'DBController@storeItem');
 Route::get('getLastSpecial', 'DBController@getLastSpecial');
 Route::get('getAllSpecials', 'DBController@getAllSpecials');

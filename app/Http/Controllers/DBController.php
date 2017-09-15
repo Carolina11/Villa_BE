@@ -9,26 +9,36 @@ use Purifier;
 use App\Type;
 use App\Ingredient;
 use App\Special;
+use App\Menu;
 
 class DBController extends Controller
 {
   public function getLastSpecial()
   {
-    $lastSpecial = Special::orderBy('id', 'DESC')->first();
+    $lastSpecial = Special::leftJoin('types', 'specials.type', '=', 'types.type_id')
+    ->leftJoin('ingredients', 'specials.ingredient', '=', 'ingredients.ing_id')
+    ->leftJoin('menus', 'specials.onMenu', '=', 'menus.menu_id')
+    ->orderBy('id', 'DESC')->first();
 
     return Response::json(['lastSpecial' => $lastSpecial]);
   }
 
   public function getAllSpecials()
   {
-    $allSpecials = Special::orderBy('name', 'ASC')->get();
+    $allSpecials = Special::leftJoin('types', 'specials.type', '=', 'types.type_id')
+    ->leftJoin('ingredients', 'specials.ingredient', '=', 'ingredients.ing_id')
+    ->leftJoin('menus', 'specials.onMenu', '=', 'menus.menu_id')
+    ->orderBy('dish', 'ASC')->get();
 
     return Response::json(['allSpecials' => $allSpecials]);
   }
 
   public function getMarkedSpecials()
   {
-    $markedSpecials = Special::orderBy('name', 'ASC')->first();
+    $markedSpecials = Special::leftJoin('types', 'specials.type', '=', 'types.type_id')
+    ->leftJoin('ingredients', 'specials.ingredient', '=', 'ingredients.ing_id')
+    ->leftJoin('menus', 'specials.onMenu', '=', 'menus.menu_id')
+    ->orderBy('dish', 'ASC')->first();
 
     return Response::json(['markedSpecials' => $markedSpecials]);
   }
@@ -46,11 +56,16 @@ class DBController extends Controller
 
     return Response::json(['ingredients' => $ingredients]);
   }
+  public function getMenus()
+  {
+    $menus = Menu::all();
 
+    return Response::json(['menus' => $menus]);
+  }
   public function storeItem(Request $request)
   {
     $rules = [
-      'name' => 'required',
+      'dish' => 'required',
       'type' => 'required',
       'ingredient' => 'required',
       'description' => 'required',
@@ -62,7 +77,7 @@ class DBController extends Controller
     {
       return Response::json(['error' => 'Please fill out all fields.']);
     }
-    $name = $request->input('name');
+    $dish = $request->input('dish');
     $type = $request->input('type');
     $ingredient = $request->input('ingredient');
     $description = $request->input('description');
@@ -71,7 +86,7 @@ class DBController extends Controller
     $onMenu = $request->input('onMenu');
 
     $special = new Special;
-    $special->name = $name;
+    $special->dish = $dish;
     $special->type = $type;
     $special->ingredient = $ingredient;
     $special->description = $description;
