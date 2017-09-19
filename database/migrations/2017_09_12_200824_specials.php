@@ -19,6 +19,7 @@ class Specials extends Migration
             $table->string('dish');
             $table->string('price');
             $table->string('description');
+            $table->string('quantity')->nullable();
             $table->string('pairings')->nullable();
             $table->integer('ingredient')->nullable();;
             $table->integer('onMenu')->nullable();

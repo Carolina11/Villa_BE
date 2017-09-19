@@ -22,6 +22,7 @@ Route::get('getMenus', 'DBController@getMenus');
 Route::post('storeItem', 'DBController@storeItem');
 Route::get('getLastSpecial', 'DBController@getLastSpecial');
 Route::get('getAllSpecials', 'DBController@getAllSpecials');
-Route::get('getMarkedSpecials', 'DBController@getMarkedSpecials');
+Route::get('getMenuSpecials', 'DBController@getMenuSpecials');
+Route::post('searchSpecials', 'DBController@searchSpecials');
 
 Route::any('{path?}', 'MainController@index')->where("path", ".+");
