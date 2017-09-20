@@ -35,20 +35,22 @@ class DBController extends Controller
 
   public function getLastSpecial()
   {
-    $lastSpecial = Special::leftJoin('types', 'specials.type', '=', 'types.type_id')
-    ->leftJoin('ingredients', 'specials.ingredient', '=', 'ingredients.ing_id')
-    ->leftJoin('menus', 'specials.onMenu', '=', 'menus.menu_id')
-    ->orderBy('id', 'DESC')->first();
+    $lastSpecial = Special::leftJoin('types', 'specials.type', '=', 'types.id')
+    ->leftJoin('ingredients', 'specials.ingredient', '=', 'ingredients.id')
+    ->leftJoin('menus', 'specials.onMenu', '=', 'menus.id')
+    ->select('specials.id', 'specials.name AS name', 'specials.price','specials.description', 'specials.quantity', 'specials.pairings', 'types.name AS type', 'ingredients.name AS ingredient', 'menus.name AS menu')
+    ->orderBy('specials.id', 'DESC')->first();
 
     return Response::json(['lastSpecial' => $lastSpecial]);
   }
 
   public function getAllSpecials()
   {
-    $allSpecials = Special::leftJoin('types', 'specials.type', '=', 'types.type_id')
-    ->leftJoin('ingredients', 'specials.ingredient', '=', 'ingredients.ing_id')
-    ->leftJoin('menus', 'specials.onMenu', '=', 'menus.menu_id')
-    ->orderBy('dish', 'ASC')->get();
+    $allSpecials = Special::leftJoin('types', 'specials.type', '=', 'types.id')
+    ->leftJoin('ingredients', 'specials.ingredient', '=', 'ingredients.id')
+    ->leftJoin('menus', 'specials.onMenu', '=', 'menus.id')
+    ->select('specials.id', 'specials.name AS name', 'specials.price','specials.description', 'specials.quantity', 'specials.pairings', 'types.name AS type', 'ingredients.name AS ingredient', 'menus.name AS menu')
+    ->orderBy('specials.name', 'ASC')->get();
 
     return Response::json(['allSpecials' => $allSpecials]);
   }
@@ -57,86 +59,52 @@ class DBController extends Controller
   {
     $onMenuID = $request->input('onMenuID');
 
-    $menuSpecials = Special::leftJoin('types', 'specials.type', '=', 'types.type_id')
-    ->leftJoin('ingredients', 'specials.ingredient', '=', 'ingredients.ing_id')
-    ->leftJoin('menus', 'specials.onMenu', '=', 'menus.menu_id')
-    ->where('onMenu', '=', $onMenuID)
-    ->orderBy('quantity', 'ASC')->get();
+    $menuSpecials = Special::leftJoin('types', 'specials.type', '=', 'types.id')
+    ->leftJoin('ingredients', 'specials.ingredient', '=', 'ingredients.id')
+    ->leftJoin('menus', 'specials.onMenu', '=', 'menus.id')
+    ->where('specials.onMenu', '=', $onMenuID)
+    ->select('specials.id', 'specials.name AS name', 'specials.price','specials.description', 'specials.quantity', 'specials.pairings', 'types.name AS type', 'ingredients.name AS ingredient', 'menus.name AS menu')
+    ->orderBy('specials.quantity', 'ASC')->get();
 
     return Response::json(['menuSpecials' => $menuSpecials]);
   }
 
+
+
   public function searchSpecials(Request $request)
   {
-    $dish = $request->input('dish');
+    $name = $request->input('name');
     $type = $request->input('type');
     $ingredient = $request->input('ingredient');
     $description = $request->input('description');
 
-    $fields = [];
-    if($dish != NULL) {
-      $multi[] = "dish";
-      $multi[] = 'LIKE';
-      $multi[] = '%'.$dish.'%';
-      $fields[] = $multi;
+    $searchSpecials = Special::leftJoin('types', 'specials.type', '=', 'types.id')
+    ->leftJoin('ingredients', 'specials.ingredient', '=', 'ingredients.id')
+    ->leftJoin('menus', 'specials.onMenu', '=', 'menus.id');
+
+    if($name != NULL) {
+      $searchSpecials->where('specials.name', 'LIKE', '%'.$name.'%');
     }
     if($type != NULL) {
-      $multi[] = "type";
-      $multi[] = "=";
-      $multi[] = $type;
-      $fields[] = $multi;
+      $searchSpecials->where('specials.type', '=', $type);
     }
     if($ingredient != NULL) {
-      $multi[] = "ingredient";
-      $multi[] = "=";
-      $multi[] = $ingredient;
-      $fields[] = $multi;
+      $searchSpecials->where('specials.ingredient', '=', $ingredient);
     }
     if($description != NULL) {
-      $multi[] = "description";
-      $multi[] = "LIKE";
-      $multi[] = "%".$description."%";
-      $fields[] = $multi;
+      $searchSpecials->where('specials.description', 'LIKE', '%'.$description.'%');
     }
-
-    //return Response::json(['multi' => $multi]);
-    $len = count($fields);
-    $whichFields = [];
-
-    for ($x = 0; $x < $len; $x++)
-    {
-      for ($y = 0; $y < 3; $y++)
-      {
-        if ($x > 0 && $x <= $len-1)
-        {
-          $fields[$x][$y] = '->orWhere('.$fields[$x][$y].')';
-          $whichFields[] = $fields[$x][$y];
-        }
-        else {
-          $whichFields[] = $fields[$x][$y];
-        }
-      }
-    }
-
-    return Response::json($fields);
-
-
-
-    return Response::json(['whichFields' => $whichFields]);
-
-    $searchSpecials = Special::leftJoin('types', 'specials.type', '=', 'types.type_id')
-    ->leftJoin('ingredients', 'specials.ingredient', '=', 'ingredients.ing_id')
-    ->leftJoin('menus', 'specials.onMenu', '=', 'menus.menu_id')
-    ->where($whichFields[0][0])
-    ->orderby('specials.dish', 'ASC')->get();
+    $searchSpecials = $searchSpecials->select('specials.id', 'specials.name AS name', 'specials.price','specials.description', 'specials.quantity', 'specials.pairings', 'types.name AS type', 'ingredients.name AS ingredient', 'menus.name AS menu')
+    ->orderby('specials.name', 'ASC')
+    ->get();
 
     return Response::json(['searchSpecials' => $searchSpecials]);
-  }
+}
 
   public function storeItem(Request $request)
   {
     $rules = [
-      'dish' => 'required',
+      'name' => 'required',
       'type' => 'required',
       'ingredient' => 'required',
       'description' => 'required',
@@ -148,7 +116,7 @@ class DBController extends Controller
     {
       return Response::json(['error' => 'Please fill out all fields.']);
     }
-    $dish = $request->input('dish');
+    $name = $request->input('name');
     $type = $request->input('type');
     $ingredient = $request->input('ingredient');
     $description = $request->input('description');
@@ -157,7 +125,7 @@ class DBController extends Controller
     $onMenu = $request->input('onMenu');
 
     $special = new Special;
-    $special->dish = $dish;
+    $special->name = $name;
     $special->type = $type;
     $special->ingredient = $ingredient;
     $special->description = $description;

@@ -21,7 +21,6 @@ Route::get('getIngredients', 'DBController@getIngredients');
 Route::get('getMenus', 'DBController@getMenus');
 Route::post('storeItem', 'DBController@storeItem');
 Route::get('getLastSpecial', 'DBController@getLastSpecial');
-Route::get('getAllSpecials', 'DBController@getAllSpecials');
 Route::get('getMenuSpecials', 'DBController@getMenuSpecials');
 Route::post('searchSpecials', 'DBController@searchSpecials');
 

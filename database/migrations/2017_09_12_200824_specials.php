@@ -16,7 +16,7 @@ class Specials extends Migration
         Schema::create('specials', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('type');
-            $table->string('dish');
+            $table->string('name');
             $table->string('price');
             $table->string('description');
             $table->string('quantity')->nullable();

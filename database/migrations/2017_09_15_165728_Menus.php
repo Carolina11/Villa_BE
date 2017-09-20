@@ -14,8 +14,8 @@ class Menus extends Migration
      public function up()
      {
          Schema::create('menus', function (Blueprint $table) {
-             $table->increments('menu_id');
-             $table->string('menu_name');
+             $table->increments('id');
+             $table->string('name');
              $table->timestamps();
          });
      }
