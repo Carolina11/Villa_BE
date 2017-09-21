@@ -18,7 +18,7 @@ class Specials extends Migration
             $table->integer('type');
             $table->string('name');
             $table->string('price');
-            $table->string('description');
+            $table->string('description')->nullable();
             $table->string('quantity')->nullable();
             $table->string('pairings')->nullable();
             $table->integer('ingredient')->nullable();;
