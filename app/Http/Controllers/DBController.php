@@ -69,7 +69,7 @@ class DBController extends Controller
       $menuSpecials->where('specials.type', '=', $type);
     }
 
-    $menuSpecials = $menuSpecials->select('specials.id', 'specials.name AS name', 'specials.price','specials.description', 'specials.quantity', 'specials.pairings', 'types.name AS type', 'ingredients.name AS ingredient', 'menus.name AS menu')
+    $menuSpecials = $menuSpecials->select('specials.id', 'specials.name AS name', 'specials.price','specials.description', 'specials.quantity', 'specials.pairings', 'types.name AS type', 'ingredients.name AS ingredient', 'menus.name AS menu', 'menus.id AS menuID')
     ->orderBy('specials.type', 'ASC')->get();
 
     return Response::json(['menuSpecials' => $menuSpecials]);
@@ -88,7 +88,7 @@ class DBController extends Controller
     ->leftJoin('menus', 'specials.onMenu', '=', 'menus.id');
 
     if ($id != NULL) {
-      $searchSpecials->where('id', '=', $id);
+      $searchSpecials->where('specials.id', '=', $id);
     }
     if($name != NULL) {
       $searchSpecials->where('specials.name', 'LIKE', '%'.$name.'%');
@@ -158,6 +158,23 @@ class DBController extends Controller
 
     return Response::json(['updateItem' => $updateItem]);
   }
+
+  public function toggleMenu(Request $request)
+  {
+    $id = $request->input('id');
+    $onMenu = $request->input('onMenu');
+
+    $toggleMenu =  Special::where('id', '=', $id)->update(['onMenu' => $onMenu]);
+
+    $searchSpecials = Special::leftJoin('types', 'specials.type', '=', 'types.id')
+    ->leftJoin('ingredients', 'specials.ingredient', '=', 'ingredients.id')
+    ->leftJoin('menus', 'specials.onMenu', '=', 'menus.id')
+    ->select('specials.id', 'specials.name AS name', 'specials.price','specials.description', 'specials.quantity', 'specials.pairings', 'types.name AS type', 'ingredients.name AS ingredient', 'menus.name AS menu')
+    ->where('specials.id', '=', $id)
+    ->orderBy('specials.name', 'ASC')->get();
+
+    return Response::json(['searchSpecials' => $searchSpecials, 'success' => 'Added to menu!']);
+   }
 
 
 }

@@ -24,5 +24,6 @@ Route::get('getLastSpecial', 'DBController@getLastSpecial');
 Route::get('getMenuSpecials', 'DBController@getMenuSpecials');
 Route::post('searchSpecials', 'DBController@searchSpecials');
 Route::post('updateItem', 'DBController@updateItem');
+Route::post('toggleMenu', 'DBController@toggleMenu');
 
 Route::any('{path?}', 'MainController@index')->where("path", ".+");
