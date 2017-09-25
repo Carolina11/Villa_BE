@@ -70,7 +70,7 @@ class DBController extends Controller
     }
 
     $menuSpecials = $menuSpecials->select('specials.id', 'specials.name AS name', 'specials.price','specials.description', 'specials.quantity', 'specials.pairings', 'types.name AS type', 'ingredients.name AS ingredient', 'menus.name AS menu', 'menus.id AS menuID')
-    ->orderBy('specials.type', 'ASC')->get();
+    ->orderBy('specials.quantity', 'DESC')->get();
 
     return Response::json(['menuSpecials' => $menuSpecials]);
   }
@@ -102,7 +102,7 @@ class DBController extends Controller
     if($description != NULL) {
       $searchSpecials->where('specials.description', 'LIKE', '%'.$description.'%');
     }
-    $searchSpecials = $searchSpecials->select('specials.id', 'specials.name AS name', 'specials.price','specials.description', 'specials.quantity', 'specials.pairings', 'types.name AS type', 'ingredients.name AS ingredient', 'menus.name AS menu')
+    $searchSpecials = $searchSpecials->select('specials.id', 'specials.name AS name', 'specials.price','specials.description', 'specials.quantity', 'specials.pairings', 'specials.onMenu', 'types.name AS type', 'ingredients.name AS ingredient', 'menus.name AS menu', 'types.id AS typeID', 'ingredients.id AS ingredientID', 'menus.id AS menuID')
     ->orderby('specials.name', 'ASC')
     ->get();
 
@@ -152,11 +152,33 @@ class DBController extends Controller
     $description = $request->input('description');
     $pairings = $request->input('pairings');
     $price = $request->input('price');
-    $onMenu = $request->input('onMenu');
+    $onMenu  = $request->input('menuID');
+
+    $item = Special::find($id);
+
+    if($type == NULL) {
+      $type = $item -> type;
+    }
+    if($ingredient == NULL) {
+      $ingredient = $item -> ingredientID;
+    }
+    if($onMenu == NULL) {
+      $onMenu = $item -> onMenu;
+    }
+    if($pairings == NULL) {
+      $pairings = '';
+    }
 
     $updateItem =  Special::where('id', '=', $id)->update(['name' => $name, 'type' => $type, 'ingredient' => $ingredient, 'description' => $description, 'pairings' => $pairings, 'price' => $price, 'onMenu' => $onMenu]);
 
-    return Response::json(['updateItem' => $updateItem]);
+    $searchSpecials = Special::leftJoin('types', 'specials.type', '=', 'types.id')
+    ->leftJoin('ingredients', 'specials.ingredient', '=', 'ingredients.id')
+    ->leftJoin('menus', 'specials.onMenu', '=', 'menus.id')
+    ->select('specials.id', 'specials.name AS name', 'specials.price','specials.description', 'specials.quantity', 'specials.pairings', 'types.name AS type', 'ingredients.name AS ingredient', 'menus.name AS menu')
+    ->where('specials.id', '=', $id)
+    ->orderBy('specials.name', 'ASC')->get();
+
+    return Response::json(['searchSpecials' => $searchSpecials]);
   }
 
   public function toggleMenu(Request $request)
