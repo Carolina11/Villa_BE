@@ -63,13 +63,14 @@ class DBController extends Controller
     $menuSpecials = Special::leftJoin('types', 'specials.type', '=', 'types.id')
     ->leftJoin('ingredients', 'specials.ingredient', '=', 'ingredients.id')
     ->leftJoin('menus', 'specials.onMenu', '=', 'menus.id')
+    ->select('specials.id', 'specials.name AS name', 'specials.price','specials.description', 'specials.quantity', 'specials.pairings', 'specials.onMenu', 'types.name AS type', 'ingredients.name AS ingredient', 'menus.name AS menu')
     ->where('specials.onMenu', '=', $onMenuID);
 
     if($type != NULL) {
       $menuSpecials->where('specials.type', '=', $type);
     }
 
-    $menuSpecials = $menuSpecials->select('specials.id', 'specials.name AS name', 'specials.price','specials.description', 'specials.quantity', 'specials.pairings', 'types.name AS type', 'ingredients.name AS ingredient', 'menus.name AS menu', 'menus.id AS menuID')
+    $menuSpecials = $menuSpecials->select('specials.id', 'specials.name AS name', 'specials.price','specials.description', 'specials.quantity', 'specials.pairings', 'types.name AS type', 'ingredients.name AS ingredient', 'menus.name AS menu', 'menus.id AS menuID', 'specials.onMenu')
     ->orderBy('specials.quantity', 'DESC')->get();
 
     return Response::json(['menuSpecials' => $menuSpecials]);
@@ -174,7 +175,7 @@ class DBController extends Controller
     $searchSpecials = Special::leftJoin('types', 'specials.type', '=', 'types.id')
     ->leftJoin('ingredients', 'specials.ingredient', '=', 'ingredients.id')
     ->leftJoin('menus', 'specials.onMenu', '=', 'menus.id')
-    ->select('specials.id', 'specials.name AS name', 'specials.price','specials.description', 'specials.quantity', 'specials.pairings', 'types.name AS type', 'ingredients.name AS ingredient', 'menus.name AS menu')
+    ->select('specials.id', 'specials.name AS name', 'specials.price','specials.description', 'specials.quantity', 'specials.pairings', 'types.name AS type', 'ingredients.name AS ingredient', 'menus.name AS menu', 'specials.onMenu')
     ->where('specials.id', '=', $id)
     ->orderBy('specials.name', 'ASC')->get();
 
@@ -191,7 +192,7 @@ class DBController extends Controller
     $searchSpecials = Special::leftJoin('types', 'specials.type', '=', 'types.id')
     ->leftJoin('ingredients', 'specials.ingredient', '=', 'ingredients.id')
     ->leftJoin('menus', 'specials.onMenu', '=', 'menus.id')
-    ->select('specials.id', 'specials.name AS name', 'specials.price','specials.description', 'specials.quantity', 'specials.pairings', 'types.name AS type', 'ingredients.name AS ingredient', 'menus.name AS menu')
+    ->select('specials.id', 'specials.name AS name', 'specials.price','specials.description', 'specials.quantity', 'specials.pairings', 'types.name AS type', 'ingredients.name AS ingredient', 'menus.name AS menu', 'specials.onMenu')
     ->where('specials.id', '=', $id)
     ->orderBy('specials.name', 'ASC')->get();
 
