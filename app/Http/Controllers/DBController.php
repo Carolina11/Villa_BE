@@ -157,13 +157,13 @@ class DBController extends Controller
     $item = Special::find($id);
 
     if($type == NULL) {
-      $type = $item -> type;
+      $type = $item->type;
     }
     if($ingredient == NULL) {
-      $ingredient = $item -> ingredientID;
+      $ingredient = $item->ingredientID;
     }
     if($onMenu == NULL) {
-      $onMenu = $item -> onMenu;
+      $onMenu = $item->onMenu;
     }
     if($pairings == NULL) {
       $pairings = '';
