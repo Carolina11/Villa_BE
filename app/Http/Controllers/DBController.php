@@ -60,7 +60,7 @@ class DBController extends Controller
     $onMenuID = $request->input('onMenuID');
     $type = $request->input('type');
 
-    $menuSpecials = Special::leftJoin('types', 'specials.type', '=', 'types.id')
+    $menuSpecials = Special::join('types', 'specials.type', '=', 'types.id')
     ->leftJoin('ingredients', 'specials.ingredient', '=', 'ingredients.id')
     ->leftJoin('menus', 'specials.onMenu', '=', 'menus.id')
     ->select('specials.id', 'specials.name AS name', 'specials.price','specials.description', 'specials.quantity', 'specials.pairings', 'specials.onMenu', 'types.name AS type', 'ingredients.name AS ingredient', 'menus.name AS menu')
@@ -121,8 +121,9 @@ class DBController extends Controller
 
     if($validator->fails())
     {
-      return Response::json(['error' => 'Please fill out all fields.']);
+      return Response::json(['error' => 'Please be sure to fill out "name", "price", and "type of dish".']);
     }
+    else {
     $name = $request->input('name');
     $type = $request->input('type');
     $ingredient = $request->input('ingredient');
@@ -141,7 +142,8 @@ class DBController extends Controller
     $special->onMenu=0;
     $special->save();
 
-    return Response::json(['special' => $special]);
+    return Response::json(['special' => $special, 'onMenu' => 0]);
+    }
   }
 
   public function updateItem(Request $request)
@@ -196,7 +198,7 @@ class DBController extends Controller
     ->where('specials.id', '=', $id)
     ->orderBy('specials.name', 'ASC')->get();
 
-    return Response::json(['searchSpecials' => $searchSpecials, 'success' => 'Added to menu!']);
+    return Response::json(['searchSpecials' => $searchSpecials, 'success' => 'Updated!']);
    }
 
 
