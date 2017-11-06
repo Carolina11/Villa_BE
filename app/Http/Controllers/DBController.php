@@ -10,6 +10,7 @@ use App\Type;
 use App\Ingredient;
 use App\Special;
 use App\Menu;
+use App\Seasonalbeer;
 
 class DBController extends Controller
 {
@@ -31,6 +32,12 @@ class DBController extends Controller
     $menus = Menu::all();
 
     return Response::json(['menus' => $menus]);
+  }
+  public function getSeasonalBeers()
+  {
+    $seasonalBeers = Seasonalbeer::all();
+
+    return Response::json(['seasonalBeers' => $seasonalBeers]);
   }
 
   public function getLastSpecial()
@@ -168,6 +175,9 @@ class DBController extends Controller
     if($onMenu == NULL) {
       $onMenu = $item->onMenu;
     }
+    if($description == NULL) {
+      $description = '';
+    }
     if($pairings == NULL) {
       $pairings = '';
     }
@@ -183,6 +193,17 @@ class DBController extends Controller
 
     return Response::json(['searchSpecials' => $searchSpecials]);
   }
+
+  public function updateSeasonalBeer(Request $request)
+  {
+    $id = $request->input('id');
+    $beerName = $request->input('beerName');
+
+    $updateSeasonalBeer = Seasonalbeer::where('id', '=', $id)->update(['beerName' => $beerName]);
+
+    return Response::json(['beerNameUpdated' => $beerName]);
+  }
+
 
   public function toggleMenu(Request $request)
   {
