@@ -28,6 +28,6 @@ class SeasonalBeers extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('seasonalbeers');
     }
 }
