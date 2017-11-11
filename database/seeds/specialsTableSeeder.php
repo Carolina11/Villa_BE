@@ -18,35 +18,9 @@ class specialsTableSeeder extends Seeder
         'description' => 'Espresso and Kahlua soaked lady fingers layered with mascarpone sabayon cream sprinkled with cacao.',
         'quantity' => '',
         'pairings' => '',
+        'onMenu' => 0,
         ]);
-
-        DB::table('specials')->insert([
-        'type' => '4',
-        'name' => 'Anneliese’s Terrific Tiramisu',
-        'price' => '6.95',
-        'description' => 'Espresso and Kahlua soaked lady fingers layered with mascarpone sabayon cream sprinkled with cacao.',
-        'quantity' => '',
-        'pairings' => '',
-        ]);
-
-        DB::table('specials')->insert([
-        'type' => '4',
-        'name' => 'Anneliese’s Terrific Tiramisu',
-        'price' => '6.95',
-        'description' => 'Espresso and Kahlua soaked lady fingers layered with mascarpone sabayon cream sprinkled with cacao.',
-        'quantity' => '',
-        'pairings' => '',
-        ]);
-
-        DB::table('specials')->insert([
-        'type' => '4',
-        'name' => 'Anneliese’s Terrific Tiramisu',
-        'price' => '6.95',
-        'description' => 'Espresso and Kahlua soaked lady fingers layered with mascarpone sabayon cream sprinkled with cacao.',
-        'quantity' => '',
-        'pairings' => '',
-        ]);
-
+        
         DB::table('specials')->insert([
         'type' => '2',
         'name' => 'Baked Brie',
@@ -54,6 +28,7 @@ class specialsTableSeeder extends Seeder
         'description' => 'In puff pastry with apricot marmalade and sliced Granny Smith apples. Enough to share as an appetizer or pair with salad and a glass of wine as an entree.',
         'quantity' => '',
         'pairings' => '',
+        'onMenu' => 0,
         'ingredient' => '8',
         ]);
 
@@ -64,6 +39,7 @@ class specialsTableSeeder extends Seeder
         'description' => 'With glazed carrots, praline sweet potato casserole, garlic green beans, and corn bread stuffing.',
         'quantity' => '',
         'pairings' => '',
+        'onMenu' => 0,
         'ingredient' => '2',
         ]);
 
@@ -74,6 +50,7 @@ class specialsTableSeeder extends Seeder
         'description' => 'Basket of 4 ... 6.95',
         'quantity' => '',
         'pairings' => '',
+        'onMenu' => 0,
         ]);
 
         DB::table('specials')->insert([
@@ -83,6 +60,7 @@ class specialsTableSeeder extends Seeder
         'description' => '(26-30, shell-on) with melted butter, cocktail sauce and crackers',
         'quantity' => '',
         'pairings' => '',
+        'onMenu' => 0,
         'ingredient' => '5',
         ]);
 
@@ -93,6 +71,7 @@ class specialsTableSeeder extends Seeder
         'description' => 'Julienned sliced German luncheon meat blended with lemon aioli, sour cream thin sliced German pickles, and fresh lemon juice, on toasted German rolls.',
         'quantity' => '',
         'pairings' => '',
+        'onMenu' => 0,
         ]);
 
         DB::table('specials')->insert([
@@ -102,6 +81,7 @@ class specialsTableSeeder extends Seeder
         'description' => '',
         'quantity' => '',
         'pairings' => '',
+        'onMenu' => 0,
         ]);
 
         DB::table('specials')->insert([
@@ -111,6 +91,7 @@ class specialsTableSeeder extends Seeder
         'description' => '',
         'quantity' => '',
         'pairings' => '',
+        'onMenu' => 0,
         'ingredient' => '1',
         ]);
 
@@ -121,6 +102,7 @@ class specialsTableSeeder extends Seeder
         'description' => '',
         'quantity' => '',
         'pairings' => '',
+        'onMenu' => 0,
         'ingredient' => '1',
         ]);
 
@@ -131,6 +113,7 @@ class specialsTableSeeder extends Seeder
         'description' => 'Roma tomatoes layererd with fresh mozzarella and basil. Drizzled with olive oil, caper, lemon vinaigrette and balsamic with a side of garlic toast.',
         'quantity' => '',
         'pairings' => '',
+        'onMenu' => 0,
         ]);
 
         DB::table('specials')->insert([
@@ -140,6 +123,7 @@ class specialsTableSeeder extends Seeder
         'description' => 'Brie, smoked gouda, havarti & cheddar with fruit & crackers.',
         'quantity' => '',
         'pairings' => '',
+        'onMenu' => 0,
         'ingredient' => '8',
         ]);
 
@@ -150,6 +134,7 @@ class specialsTableSeeder extends Seeder
         'description' => 'From Ducktrap River of Maine, made with sweet brine cure, and fruitwood smoke. Served with sliced apples, red onions, rye bread and creamy horseradish sauce. Enough to share, or enjoy as a lighter entree.',
         'quantity' => '',
         'pairings' => 'A glass of Riesling, Woodchuck Cider or Kostritzer Schwarzbier pairs well with this dish.',
+        'onMenu' => 0,
         'ingredient' => '6',
         ]);
 
@@ -160,6 +145,7 @@ class specialsTableSeeder extends Seeder
         'description' => 'Shrimp and scallops in a parmesan mushroom cream sauce served with French bread.',
         'quantity' => '',
         'pairings' => '',
+        'onMenu' => 0,
         'ingredient' => '5',
         ]);
 
@@ -170,6 +156,7 @@ class specialsTableSeeder extends Seeder
         'description' => '',
         'quantity' => '',
         'pairings' => '',
+        'onMenu' => 0,
         'ingredient' => '5',
         ]);
 
@@ -180,6 +167,7 @@ class specialsTableSeeder extends Seeder
         'description' => '',
         'quantity' => '',
         'pairings' => '',
+        'onMenu' => 0,
         'ingredient' => '5',
         ]);
 
@@ -190,6 +178,7 @@ class specialsTableSeeder extends Seeder
         'description' => '',
         'quantity' => '',
         'pairings' => '',
+        'onMenu' => 0,
         'ingredient' => '5',
         ]);
 
@@ -200,6 +189,7 @@ class specialsTableSeeder extends Seeder
         'description' => 'Served with a slice of rye bread or a broetchen.',
         'quantity' => '',
         'pairings' => '',
+        'onMenu' => 0,
         ]);
 
         DB::table('specials')->insert([
@@ -209,6 +199,7 @@ class specialsTableSeeder extends Seeder
         'description' => 'With grapes, walnuts and sesame seeds on a bed of spring lettuce.',
         'quantity' => '',
         'pairings' => '',
+        'onMenu' => 0,
         'ingredient' => '1',
         ]);
 
@@ -219,6 +210,7 @@ class specialsTableSeeder extends Seeder
         'description' => 'Local strawberries, blueberries, raspberries, and blackberries, on a layer of vanilla custard sandwiched between puff pastry. Topped with whipped cream and raspberry puree.',
         'quantity' => '',
         'pairings' => '',
+        'onMenu' => 0,
         ]);
 
         DB::table('specials')->insert([
@@ -228,6 +220,7 @@ class specialsTableSeeder extends Seeder
         'description' => 'Warm spiced red wine (German tradition',
         'quantity' => '',
         'pairings' => '',
+        'onMenu' => 0,
         ]);
 
         DB::table('specials')->insert([
@@ -237,6 +230,7 @@ class specialsTableSeeder extends Seeder
         'description' => 'On a bed of iceberg and romaine with homemade Caesar dressing, garnished with Roma tomatoes, asparagus, parmesan croutons, and garlic bread.',
         'quantity' => '',
         'pairings' => 'Riesling, Pinot Grigio, Moscato, Warsteiner, Raspberry Wheat',
+        'onMenu' => 0,
         'ingredient' => '1',
         ]);
 
@@ -247,6 +241,7 @@ class specialsTableSeeder extends Seeder
         'description' => 'Choice steak with a pocket full of sautéed shrimp, black forest bacon, and shallots, topped with mushroom peppercorn demi-glace. Choice of potato and steamed veggies.',
         'quantity' => '',
         'pairings' => 'Cabernet Sauvignon, Merlot, Franziskaner',
+        'onMenu' => 0,
         'ingredient' => '3',
         ]);
 
@@ -257,6 +252,7 @@ class specialsTableSeeder extends Seeder
         'description' => 'On a bed of mixed greens, with marinated beets and asparagus, and toasted chow mein noodles, with raspberry vinaigrette and a side of sesame garlic toast.',
         'quantity' => '',
         'pairings' => '',
+        'onMenu' => 0,
         'ingredient' => '1',
         ]);
 
@@ -267,6 +263,7 @@ class specialsTableSeeder extends Seeder
         'description' => 'On a bed of mixed greens, with sliced mushrooms, marinated beets and asparagus, and parmesan croutons with raspberry vinaigrette and a side of garlic toast.',
         'quantity' => '',
         'pairings' => '',
+        'onMenu' => 0,
         'ingredient' => '1',
         ]);
 
@@ -277,6 +274,7 @@ class specialsTableSeeder extends Seeder
         'description' => 'On a bed of mixed greens, with sliced mushrooms, marinated beets and asparagus, parmesan croutons with raspberry vinaigrette, and a side of garlic toast.',
         'quantity' => '',
         'pairings' => '',
+        'onMenu' => 0,
         'ingredient' => '6',
         ]);
 
@@ -287,6 +285,7 @@ class specialsTableSeeder extends Seeder
         'description' => 'Sliced ham and ¼ rack, with stuffed potato, glazed carrots and braised kale. Served with a tossed or German salad.',
         'quantity' => '',
         'pairings' => '',
+        'onMenu' => 0,
         'ingredient' => '2',
         ]);
 
@@ -297,6 +296,7 @@ class specialsTableSeeder extends Seeder
         'description' => 'Baked Ham and 4 Roast Lamb Chops, with glazed carrots, praline sweet potato casserole, garlic green beans, and corn bread stuffing, tossed or German salad, home-baked bread, and choice of Cheesecake or Banana Pudding for two.',
         'quantity' => '',
         'pairings' => '',
+        'onMenu' => 0,
         'ingredient' => '2',
         ]);
 
@@ -307,6 +307,7 @@ class specialsTableSeeder extends Seeder
         'description' => 'Giant, well-seasoned, bone-in pork grilled and topped with sauteed onions and mushrooms, served with home fries.',
         'quantity' => '',
         'pairings' => '',
+        'onMenu' => 0,
         'ingredient' => '3',
         ]);
 
@@ -317,6 +318,7 @@ class specialsTableSeeder extends Seeder
         'description' => 'Blended with sliced apples, onions and black peppercorns, served with rye bread or crackers. Available with roasted potatoes 6.75.',
         'quantity' => '',
         'pairings' => '',
+        'onMenu' => 0,
         'ingredient' => '6',
         ]);
 
@@ -327,6 +329,7 @@ class specialsTableSeeder extends Seeder
         'description' => 'Generous catch of fresh shrimp salad paired with a nest of chicken salad with grapes, craisins and walnuts, on a bed of Peggy’s tower garden greens. Served with fresh fruit and tomato olive bruschetta on toasted French bread rounds.',
         'quantity' => '',
         'pairings' => '',
+        'onMenu' => 0,
         'ingredient' => '1',
         ]);
 
@@ -337,6 +340,7 @@ class specialsTableSeeder extends Seeder
         'description' => '',
         'quantity' => '',
         'pairings' => '',
+        'onMenu' => 0,
         ]);
 
         DB::table('specials')->insert([
@@ -346,6 +350,7 @@ class specialsTableSeeder extends Seeder
         'description' => '1/2 dozen fresh oysters topped with sautéed spinach, mornay sauce and parmesan cheese.',
         'quantity' => '',
         'pairings' => '',
+        'onMenu' => 0,
         'ingredient' => '5',
         ]);
 
@@ -356,6 +361,7 @@ class specialsTableSeeder extends Seeder
         'description' => 'Iceberg wedge topped with pear vinaigrette, sprinkled with fresh bacon bits, blue cheese crumbles, and garnished with marinated asparagus.',
         'quantity' => '',
         'pairings' => '',
+        'onMenu' => 0,
         ]);
 
         DB::table('specials')->insert([
@@ -365,6 +371,7 @@ class specialsTableSeeder extends Seeder
         'description' => 'French Bread rounds brushed with garlic butter and baked with with prosciutto ham, pesto sauce (contains pine nuts), and fresh mozzarella.',
         'quantity' => '',
         'pairings' => '',
+        'onMenu' => 0,
         'ingredient' => '2',
         ]);
 
@@ -375,6 +382,7 @@ class specialsTableSeeder extends Seeder
         'description' => '',
         'quantity' => '',
         'pairings' => '',
+        'onMenu' => 0,
         ]);
 
         DB::table('specials')->insert([
@@ -384,6 +392,7 @@ class specialsTableSeeder extends Seeder
         'description' => 'Baked Braunschweiger pate, brie, apple, and roasted onion on rye toast',
         'quantity' => '',
         'pairings' => '',
+        'onMenu' => 0,
         ]);
 
         DB::table('specials')->insert([
@@ -393,6 +402,7 @@ class specialsTableSeeder extends Seeder
         'description' => 'Deliciously decadent roasted with rosemary fresh apples, sweet onions and oranges. Served with cranberry orange demi-glace, spaetzle and red cabbage.',
         'quantity' => '',
         'pairings' => '',
+        'onMenu' => 0,
         'ingredient' => '9',
         ]);
 
@@ -403,6 +413,7 @@ class specialsTableSeeder extends Seeder
         'description' => 'New Zealand half rack crusted with fresh rosemary, garlic, honey, dijon, olive oil, rolled in bread crumbs, served with roasted reds and vegetables.',
         'quantity' => '',
         'pairings' => '',
+        'onMenu' => 0,
         'ingredient' => '4',
         ]);
 
@@ -413,6 +424,7 @@ class specialsTableSeeder extends Seeder
         'description' => 'Sliced from the leg, served with demi-glace, garlic leek mashed potatoes and steamed asparagus.',
         'quantity' => '',
         'pairings' => '',
+        'onMenu' => 0,
         'ingredient' => '4',
         ]);
 
@@ -423,6 +435,7 @@ class specialsTableSeeder extends Seeder
         'description' => 'Bone in pork roast with studded sautéed bread dumpling and gravy.',
         'quantity' => '',
         'pairings' => 'Cabernet Sauvignon, Merlot, Malbec, Spaten, Franziskaner',
+        'onMenu' => 0,
         'ingredient' => '2',
         ]);
 
@@ -433,6 +446,7 @@ class specialsTableSeeder extends Seeder
         'description' => 'Sauteed pork cutlets in a mushroom, white wine cream sauce, served with spaetzle.',
         'quantity' => '',
         'pairings' => '',
+        'onMenu' => 0,
         'ingredient' => '2',
         ]);
 
@@ -443,6 +457,7 @@ class specialsTableSeeder extends Seeder
         'description' => '',
         'quantity' => '',
         'pairings' => '',
+        'onMenu' => 0,
         'ingredient' => '5',
         ]);
 
@@ -453,6 +468,7 @@ class specialsTableSeeder extends Seeder
         'description' => 'Shrimp and scallops in a parmesan mushroom cream sauce served with French bread. Enjoy as an appetizer or pair with an a la carte salad as an entrée.',
         'quantity' => '',
         'pairings' => '',
+        'onMenu' => 0,
         'ingredient' => '5',
         ]);
 
@@ -463,6 +479,7 @@ class specialsTableSeeder extends Seeder
         'description' => 'Stuffed with our delicious au gratin blend of seafood baked with Emmenthal cheese.',
         'quantity' => '',
         'pairings' => '',
+        'onMenu' => 0,
         'ingredient' => '5',
         ]);
 
@@ -473,6 +490,7 @@ class specialsTableSeeder extends Seeder
         'description' => 'Bathed in orange and lemon and dry cured and then cold smoked with hickory. Smoked salmon on broetchen with cream cheese, capers, onions, hard boiled egg, and horseradish sauce.',
         'quantity' => '',
         'pairings' => '',
+        'onMenu' => 0,
         'ingredient' => '6',
         ]);
 
@@ -483,6 +501,7 @@ class specialsTableSeeder extends Seeder
         'description' => 'Smoked salmon on French bread rounds with cream cheese, capers, onions, hard boiled egg.',
         'quantity' => '',
         'pairings' => '',
+        'onMenu' => 0,
         'ingredient' => '6',
         ]);
 
@@ -493,6 +512,7 @@ class specialsTableSeeder extends Seeder
         'description' => 'Filled with spinach, feta, artichokes, sun-dried tomatoes, topped with garlic butter crumbs.',
         'quantity' => '',
         'pairings' => '',
+        'onMenu' => 0,
         ]);
 
         DB::table('specials')->insert([
@@ -502,6 +522,7 @@ class specialsTableSeeder extends Seeder
         'description' => 'Filled with apples, homemade sausage and dried cranberries, on a bed of garlic leek mashed potatoes, with glazed carrots and port wine demi-glace.',
         'quantity' => '',
         'pairings' => '',
+        'onMenu' => 0,
         'ingredient' => '2',
         ]);
 
@@ -512,6 +533,7 @@ class specialsTableSeeder extends Seeder
         'description' => '',
         'quantity' => '',
         'pairings' => '',
+        'onMenu' => 0,
         ]);
 
         DB::table('specials')->insert([
@@ -521,6 +543,7 @@ class specialsTableSeeder extends Seeder
         'description' => 'Roma tomatoes with fresh mozzarella and basil. Drizzled with olive oil and balsamic on toasted French bread.',
         'quantity' => '',
         'pairings' => '',
+        'onMenu' => 0,
         ]);
 
         DB::table('specials')->insert([
@@ -530,6 +553,7 @@ class specialsTableSeeder extends Seeder
         'description' => 'Roma tomatoes with fresh mozzarella and basil. Drizzled with olive oil and balsamic on the side with garlic toast.',
         'quantity' => '',
         'pairings' => '',
+        'onMenu' => 0,
         ]);
 
         DB::table('specials')->insert([
@@ -539,6 +563,7 @@ class specialsTableSeeder extends Seeder
         'description' => 'Black and green olives with garlic, and sun dried tomatoes, artichokes, basil, on French bread.',
         'quantity' => '',
         'pairings' => '',
+        'onMenu' => 0,
         ]);
 
         DB::table('specials')->insert([
@@ -548,6 +573,7 @@ class specialsTableSeeder extends Seeder
         'description' => 'A tradition of brewing excellence',
         'quantity' => '',
         'pairings' => '',
+        'onMenu' => 0,
         ]);
 
         DB::table('specials')->insert([
@@ -557,6 +583,7 @@ class specialsTableSeeder extends Seeder
         'description' => '23oz Giant $4.95 … 32oz Hf. Pitch 5.95 …. 60oz Pitcher $10.95',
         'quantity' => '',
         'pairings' => '',
+        'onMenu' => 0,
         ]);
 
         DB::table('specials')->insert([
@@ -566,7 +593,9 @@ class specialsTableSeeder extends Seeder
         'description' => '',
         'quantity' => '',
         'pairings' => '',
+        'onMenu' => 0,
         ]);
+
 
     }
 }
